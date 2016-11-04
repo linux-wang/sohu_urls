@@ -15,4 +15,4 @@ if __name__ == '__main__':
     multi_process(start_url, 8)
     # process_url(start_url)
     end = datetime.datetime.now()
-    print end - begin
+    print u"用时: ", end - begin
