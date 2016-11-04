@@ -1,4 +1,4 @@
-### 运行环境
+### 运行步骤
 1. Mac or Linux
 2. pip install -r requirements.txt
 3. python main.py
