@@ -17,7 +17,6 @@ def get_page(url):
         page = requests.get(url, headers=header)
     except requests.exceptions.MissingSchema:
         page = None
-        pass
 
     if page and page.status_code == 200:
         soup = BeautifulSoup.BeautifulSoup(page.text)
@@ -48,7 +47,7 @@ def get_page_url(url):
     return page_urls
 
 
-def get_all_urls(start_url, n):
+def get_all_urls(start_url, n=2):
     """ 获取全部链接,n代表获取到几级页面,后期考虑多线程去爬 """
     urls = dict()
     all_urls = set()
@@ -65,4 +64,3 @@ def get_all_urls(start_url, n):
                     all_urls.update(get_page_url(url))
 
     return all_urls
-# TODO: 查看获取url函数
