@@ -4,6 +4,7 @@ import sys
 
 import BeautifulSoup
 import requests
+import urllib2
 
 from settings import header
 
@@ -13,13 +14,13 @@ sys.setdefaultencoding('utf-8')
 
 def get_page(url):
     """ 获取网页源码,若网页打开,则获取源码,否则返回None """
-    try:
-        page = requests.get(url, headers=header)
-    except requests.exceptions.MissingSchema:
-        page = None
 
-    if page and page.status_code == 200:
-        soup = BeautifulSoup.BeautifulSoup(page.text)
+    req = urllib2.Request(url)
+    req.add_header('User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36')
+    page = urllib2.urlopen(req)
+
+    if page and page.getcode() == 200:
+        soup = BeautifulSoup.BeautifulSoup(page.read())
         return soup
 
     return None
