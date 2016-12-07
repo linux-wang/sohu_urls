@@ -1,12 +1,9 @@
 # -*- coding=utf-8 -*-
 
 import sys
-
-import BeautifulSoup
-import requests
 import urllib2
 
-from settings import header
+import BeautifulSoup
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
